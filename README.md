@@ -1,6 +1,11 @@
 # Dijkstra's Algorithm
 A Typescript implementation of Dijkstra's Algorithm and a Graph data structure.
 
+### Run the Tests
+
+1) Install dependancies with `npm install`.
+2) Run the tests with `npm test`.
+
 ### Pseudocode
 ```
 function Dijkstra(Graph, source):
