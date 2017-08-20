@@ -1,0 +1,26 @@
+{
+  "name": "dijkstra",
+  "version": "0.0.0",
+  "description": "implementation of Dijkstra's Algorithm",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chetsercharles/dijkstra"
+  },
+  "scripts": {
+    "compile": "tsc",
+    "test": "mocha -r ts-node/register **/Dijkstra.spec.ts"
+  },
+  "author": {
+    "name": "Chester Carmer",
+    "email": "chestercarmer@icloud.com"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.0.3",
+    "@types/mocha": "^2.2.41",
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.4.2"
+  },
+  "dependencies": {}
+}
