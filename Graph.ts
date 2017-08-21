@@ -1,4 +1,6 @@
 /**
+ * Implementation of a Graph data structure
+ * 
  * Code adapted from 
  * http://blog.benoitvallon.com/data-structures-in-javascript/the-graph-data-structure/
  */
@@ -60,13 +62,24 @@ export class Graph {
         });
     }
 
-    deriveShortestPaths(prev: object, source: string): object {
-        let path = {};
-        
-        for (let node in prev) {
-            path[node] = [source, prev[node]]
+    /**
+     * Get full shortest path from previous vertices in vertex's shortest path
+     * @param prev 
+     * @param source 
+     */
+    deriveShortestPaths(prev: number[], source: number): number[][] {
+        let getPrev = (path, v) => {
+            let next = prev[v]
+            if (next) {
+                path.push(next);
+                return getPrev(path, next);
+            } else {
+                path.push(source);
+                path.reverse()
+                return path;
+            }
         }
-        return {};
+        return prev.map((v, i) => getPrev([i], i) );
     }
 
 }

@@ -53,12 +53,14 @@ export function Dijkstra(graph: Graph, source: Vertex) {
 
             if (alt < dist[v.nominal]) {
                 /**
-                 * If the current source->v distance is further than
-                 * the source->u + u->v distance, then set the new 
-                 * source->v distance to source->u + u->v
+                 * If the current source->v distance is further than the source->u + u->v distance, 
+                 * then set the new source->v distance to source->u + u->v
                  */
                 dist[v.nominal] = alt;
 
+                /**
+                 * Set the previous vertex in the shortest path from source->v to u
+                 */
                 prev[v.nominal] = u.nominal;
             }
         }

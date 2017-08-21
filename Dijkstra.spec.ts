@@ -34,25 +34,37 @@ edges.forEach( e => {
     (<any>graph.addEdge)(...e);
 });
 
-
+/**
+ * Run tests
+ */
 describe("Dijkstra's algorithm", () => {
 
     const source = graph.getVertex(0);
     const result = Dijkstra(graph, source);
 
-  it('should output the shortest distance from the source to a given vertex', () => {
-    const dist = [0, 4, 12, 19, 21, 11, 9, 8, 14];
-    expect(result.dist).to.deep.equal(dist);
-  });
+    it('should output the shortest distance from the source to a given vertex', () => {
+        const dist = [0, 4, 12, 19, 21, 11, 9, 8, 14];
+        expect(result.dist).to.deep.equal(dist);
+    });
 
-  it("should output the previous vertex in the shortest path for each vertex", () => {
-    const prev = [undefined, 0, 1, 2, 5, 6, 7, 0, 2]
-    expect(result.prev).to.deep.equal(prev);
-  });
-});
+    it("should output the previous vertex in the shortest path for each vertex", () => {
+        const prev = [undefined, 0, 1, 2, 5, 6, 7, 0, 2];
+        expect(result.prev).to.deep.equal(prev);
+    });
 
-describe("Post-processing by Graph", () => {
-  it('should output the shortest distance from the source to a given vertex', () => {
-    expect(true).to.deep.equal(true);
-  });
+    it('should output the shortest distance from the source to a given vertex', () => {
+        const path = [
+            [0, 0], 
+            [0, 1], 
+            [0, 1, 2], 
+            [0, 1, 2, 3], 
+            [0, 7, 6, 5, 4], 
+            [0, 7, 6, 5], 
+            [0, 7, 6], 
+            [0, 7], 
+            [0, 1, 2, 8]
+        ]
+
+        expect( graph.deriveShortestPaths(result.prev, 0) ).to.deep.equal(path);
+    });
 });
