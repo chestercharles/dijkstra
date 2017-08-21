@@ -4,13 +4,13 @@
  */
 
 export interface Vertex {
-    vertex: string,
+    nominal: number,
     edges: Edge[]
 }
 
 export interface Edge {
     terminal: Vertex,
-    edgeLength: number;
+    distance: number;
 }
 
 export class Graph {
@@ -22,45 +22,51 @@ export class Graph {
 
     /**
      * Returns the vertex instance in the graph
-     * @param {string} vertex 
+     * @param {number} vertex 
      * @return {Vertex}
      */
-    getVertex(vertex: string): Vertex {
-        return this.vertices.find(v => v.vertex === vertex);
+    getVertex(nominal: number): Vertex {
+        return this.vertices.find(v => v.nominal === nominal);
     }
 
     /**
      * Adds a vertex with an empty array of edges to the graph
-     * @param {string} vertex 
+     * @param {number} nominal 
      * @return {void}
      */
-    addVertex(vertex: string): void {
+    addVertex(nominal: number): void {
         this.vertices.push({
-            vertex: vertex,
+            nominal: nominal,
             edges: []
         });
     }
 
     /**
      * Creates an edge between two verticies
-     * @param {string} vertex1 
-     * @param {string} vertex2 
-     * @param {number} edgeLength 
+     * @param {number} nominal1 
+     * @param {number} nominal2 
+     * @param {number} distance 
      */
-    addEdge(vertex1: string, vertex2: string, edgeLength: number): void {
-        /**
-         * 
-         */
-        let _vertex1 =  this.vertices.find(v => v.vertex === vertex1);
-        let _vertex2 =  this.vertices.find(v => v.vertex === vertex2);
-        _vertex1.edges.push({
-            terminal: _vertex2,
-            edgeLength: edgeLength
+    addEdge(nominal1: number, nominal2: number, distance: number): void {
+        let vertex1 =  this.vertices.find(v => v.nominal === nominal1);
+        let vertex2 =  this.vertices.find(v => v.nominal === nominal2);
+        vertex1.edges.push({
+            terminal: vertex2,
+            distance: distance
         });
-        _vertex2.edges.push({
-            terminal: _vertex1,
-            edgeLength: edgeLength
+        vertex2.edges.push({
+            terminal: vertex1,
+            distance: distance
         });
+    }
+
+    deriveShortestPaths(prev: object, source: string): object {
+        let path = {};
+        
+        for (let node in prev) {
+            path[node] = [source, prev[node]]
+        }
+        return {};
     }
 
 }

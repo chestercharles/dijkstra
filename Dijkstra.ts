@@ -8,24 +8,24 @@ import { Vertex, Edge, Graph } from './Graph.js'
 export function Dijkstra(graph: Graph, source: Vertex) {
     let Q: Vertex[] = [];
 
-    let dist: any = {};
-    let prev: any = {};
+    let dist: number[] = [];
+    let prev: number[] = [];
     let u: Vertex;
     let alt: number;
 
-    for (let node of graph.vertices) {
+    for (let vertex of graph.vertices) {
         /**
          * Initialize distance between source and all nodes to Infinity,
          * and all shortest paths to undefined
          */
-        dist[node.vertex] = Infinity;
-        prev[node.vertex] = undefined;
-        Q.push(node);
+        dist[vertex.nominal] = Infinity;
+        prev[vertex.nominal] = undefined;
+        Q.push(vertex);
     }
     /**
      * Path to source from source is zero
      */
-    dist[source.vertex] = 0;
+    dist[source.nominal] = 0;
 
     while (Q.length > 0) {
         /**
@@ -33,7 +33,7 @@ export function Dijkstra(graph: Graph, source: Vertex) {
          * the source that has not yet been visited
          */
         u = Q.reduce((min, next): Vertex => {
-            if (dist[next.vertex] < dist[min.vertex]) {
+            if (dist[next.nominal] < dist[min.nominal]) {
                 min = next;
             }
             return min;
@@ -49,17 +49,17 @@ export function Dijkstra(graph: Graph, source: Vertex) {
             /**
              * Add the source->u distance to the u->v distance
              */
-            alt = dist[u.vertex] + u.edges.find(e => e.terminal === v).edgeLength;
+            alt = dist[u.nominal] + u.edges.find(e => e.terminal === v).distance;
 
-            if (alt < dist[v.vertex]) {
+            if (alt < dist[v.nominal]) {
                 /**
                  * If the current source->v distance is further than
                  * the source->u + u->v distance, then set the new 
                  * source->v distance to source->u + u->v
                  */
-                dist[v.vertex] = alt;
+                dist[v.nominal] = alt;
 
-                prev[v.vertex] = u.vertex;
+                prev[v.nominal] = u.nominal;
             }
         }
     }
