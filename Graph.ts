@@ -3,6 +3,9 @@
  * 
  * Code adapted from 
  * http://blog.benoitvallon.com/data-structures-in-javascript/the-graph-data-structure/
+ * 
+ * @author Chester Carmer
+ * @version 0.0.0
  */
 
 export interface Vertex {
@@ -20,6 +23,13 @@ export class Graph {
 
     constructor() {
         this.vertices = [];
+    }
+
+    /**
+     * Returns the graphs vertices
+     */
+    getVerticies(): Vertex[] {
+        return this.vertices;
     }
 
     /**

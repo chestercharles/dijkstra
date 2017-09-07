@@ -1,6 +1,9 @@
 /**
  * Dijkstra's Algorithmn
  * Finds shortest distance between nodes in a graph
+ * 
+ * @author Chester Carmer
+ * @version 0.0.0
 */
 
 import { Vertex, Edge, Graph } from './Graph.js'

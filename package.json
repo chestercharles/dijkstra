@@ -8,7 +8,7 @@
   },
   "scripts": {
     "compile": "tsc",
-    "test": "mocha -r ts-node/register **/Dijkstra.spec.ts"
+    "test": "mocha -r ts-node/register **.spec.ts"
   },
   "author": {
     "name": "Chester Carmer",
