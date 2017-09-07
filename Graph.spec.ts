@@ -20,15 +20,15 @@ describe("Graph", () => {
     vertices.forEach( v => graph.addVertex(v) );
     edges.forEach( e => (<any>graph.addEdge)(...e) );
 
-    it('should have 3 vertices', () => {
+    it('should have the correct number of vertices', () => {
         expect(graph.getVerticies().length).to.equal(3);
     });
 
-    it("should have vertex 0 with two edges", () => {
+    it("should have vertices with the correct number of edges", () => {
         expect(graph.getVertex(0).edges.length).to.deep.equal(2);
     });
 
-    it("should have vertex 0 with and edge to vertex 2 with a length of 3", () => {
+    it("should edges with the correct length", () => {
         expect(graph.getVertex(0).edges.find(e => e.terminal === graph.getVertex(2)).distance).to.equal(3);
     });
     
