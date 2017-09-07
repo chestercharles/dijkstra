@@ -29,7 +29,13 @@ describe("Graph", () => {
     });
 
     it("should edges with the correct length", () => {
-        expect(graph.getVertex(0).edges.find(e => e.terminal === graph.getVertex(2)).distance).to.equal(3);
+        expect(
+            graph
+                .getVertex(0)
+                .edges
+                .find(e => e.terminal === graph.getVertex(2))
+                .distance
+        ).to.equal(3);
     });
     
 });

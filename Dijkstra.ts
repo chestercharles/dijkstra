@@ -18,7 +18,8 @@ export function Dijkstra(graph: Graph, source: Vertex) {
 
     for (let vertex of graph.vertices) {
         /**
-         * Initialize distance between source and all nodes to Infinity,
+         * Initialize distance between source 
+         * and all nodes to Infinity,
          * and all shortest paths to undefined
          */
         dist[vertex.nominal] = Infinity;
@@ -46,7 +47,9 @@ export function Dijkstra(graph: Graph, source: Vertex) {
         /**
          * Get neighbors of u that are still unvisited
          */
-        let neighbors: Vertex[] = u.edges.map(e => e.terminal).filter(t => ~Q.indexOf(t));
+        let neighbors: Vertex[] = u.edges
+            .map(e => e.terminal)
+            .filter(t => ~Q.indexOf(t));
 
         for (let v of neighbors) {
             /**
@@ -56,13 +59,16 @@ export function Dijkstra(graph: Graph, source: Vertex) {
 
             if (alt < dist[v.nominal]) {
                 /**
-                 * If the current source->v distance is further than the source->u + u->v distance, 
-                 * then set the new source->v distance to source->u + u->v
+                 * If the current source->v distance is 
+                 * further than the source->u + u->v distance, 
+                 * then set the new source->v distance 
+                 * to source->u + u->v
                  */
                 dist[v.nominal] = alt;
 
                 /**
-                 * Set the previous vertex in the shortest path from source->v to u
+                 * Set the previous vertex in the shortest 
+                 * path from source->v to u
                  */
                 prev[v.nominal] = u.nominal;
             }
