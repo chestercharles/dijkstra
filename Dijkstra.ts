@@ -15,6 +15,8 @@ export function Dijkstra(graph: Graph, source: Vertex) {
     let prev: number[] = [];
     let u: Vertex;
     let alt: number;
+    
+    // brand new code
 
     for (let vertex of graph.vertices) {
         /**
